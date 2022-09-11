@@ -126,7 +126,7 @@ then
 	if [ $1 == -h ]
 	then
 		usage
-	elif [[ $1 =~ ^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$ ]]
+elif [[ $1 =~ ^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$ ]] | [[ $1 =~ ^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$ ]]
 	then
 		port_scan
 		web_port_search
@@ -135,7 +135,7 @@ then
 	then 	
 		del_files
 	else
-		echo "[-] Only IP Address is supported/IP Address can be incorrect."  
+		echo "[-] IP Address and URL's are only accepted."  
 		exit 1
 	fi
 else
