@@ -81,19 +81,19 @@ function file_search(){
 
 function dir_search(){
 	echo "" 
-	if [ $var1 == "80" ];
+	if [ "$var1" == "80" ];
 	then
 		echo -e "[*] Doing directory search for port 80\n"
 		feroxbuster -u http://$IP/ -w /usr/share/seclists/Discovery/Web-Content/common.txt -d $DEPTH --quiet --no-state -o common_dir_search_80.txt 1>/dev/null
 		feroxbuster -u http://$IP/ -w /usr/share/seclists/Discovery/Web-Content/big.txt -d $DEPTH --quiet --no-state -o big_dir_search_80.txt 1>/dev/null
 		echo -e "[+] Written the result of directory search to files common_dir_search_80 and big_dir_search_80\n"
-	elif [ $var2 == "8080" ];
+	elif [ "$var2" == "8080" ];
 	then
 		echo -e "[*] Doing directory search for port 8080\n"
 		feroxbuster -u http://$IP:8080/ -w /usr/share/seclists/Discovery/Web-Content/common.txt -$DEPTH --quiet --no-state -o common_dir_search_8080.txt 1>/dev/null
 		feroxbuster -u http://$IP:8080/ -w /usr/share/seclists/Discovery/Web-Content/big.txt -d $DEPTH --quiet --no-state -o big_dir_search_8080.txt 1>/dev/null
 		echo -e "[+] Written the result of directory search to files common_dir_search_8080 and big_dir_search_8080\n"
-	elif [ $var3 == "8000" ];
+	elif [ "$var3" == "8000" ];
 	then
 		echo -e "[*] Doing directory search for port 8000\n"
 		feroxbuster -u http://$IP:8000/ -w /usr/share/seclists/Discovery/Web-Content/common.txt -$DEPTH --quiet --no-state -o common_dir_search_8000.txt 1>/dev/null 
