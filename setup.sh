@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sec=$(find /usr/share -type d -name "seclists" 2>/dev/null)
 if [ "$EUID" -ne 0 ]
 then
     echo Please run as root/sudo
@@ -13,4 +14,14 @@ else
     echo "Installing feroxbuster"
     sudo snap install feroxbuster -y
     sudo rm rustscan_1.10.0_amd64.deb
+    if [ ! -d "$sec" ]
+    then
+        cd /usr/share
+        wget -c https://github.com/danielmiessler/SecLists/archive/master.zip -O SecList.zip
+        unzip SecList.zip
+        rm -f SecList.zip
+        mv SecLists-master seclists
+    else
+        echo "Seclist already present"
+    fi
 fi
